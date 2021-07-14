@@ -68,7 +68,7 @@ export class MatCarouselComponent
   @Input() public hideArrows = true;
   @Input() public hideIndicators = true;
   @Input() public pauseOnHover = true;
-  @Input() public progressIndicator = false;
+  @Input() public progressIndicator = '';
   @Input() public color: ThemePalette = 'accent';
 
   public get maxWidth(): string {

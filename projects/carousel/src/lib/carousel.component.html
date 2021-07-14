@@ -79,12 +79,13 @@
       (click)="slideTo(i)"
       (focus)="carouselContainer.focus()"
     >
-      <span
-        *ngIf="progressIndicator && i == currentIndex"
+      <div
+        *ngIf="progressIndicator"
         class="progress-indicator"
-        [style.transition-duration]="interval"
-        [color]="color">
-      </span>
+        [class.running]="i === currentIndex"
+        [style.transition-duration]="interval + 'ms'"
+        [style.background-color]="progressIndicator">
+      </div>
     </button>
   </div>
 </div>

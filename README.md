@@ -70,6 +70,7 @@ import { MatCarousel, MatCarouselComponent } from '@ngbmodule/material-carousel'
 | `orientation`         | `Orientation`      | Orientation of the sliding panel.                                          | `'ltr'`           |
 | `svgIconOverrides`    | `SvgIconOverrides` | Override default carousel icons with registered SVG icons.                 |                   |
 | `pauseOnHover`        | `boolean`          | Override default pause on hover.                                           | `true`            |
+| `progressIndicator`   | `string`           | Adds a progress indicator in a given css color into the carousel indicators| `''`              |
 
 
 | Output                |  Type              | Description                                                                |

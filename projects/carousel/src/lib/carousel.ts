@@ -20,6 +20,7 @@ export interface MatCarousel {
   useMouseWheel: boolean;
   orientation: Orientation;
   pauseOnHover: boolean;
+  progressIndicator: string;
 }
 
 export type Orientation = 'ltr' | 'rtl';
