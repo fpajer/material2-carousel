@@ -76,7 +76,8 @@ import { MatCarousel, MatCarouselComponent } from '@ngbmodule/material-carousel'
 | Output                |  Type              | Description                                                                |
 | --------------------- | ------------------ | -------------------------------------------------------------------------- |
 | `animationStart`      | `number`           | It emits the currentIndex when animation starts                            |
-| `change`              | `number`           | It emtis the currentIndex when animation ends                              |
+| `change`              | `number`           | It emits the currentIndex when animation ends                              |
+| `manualSwitch`        | `number`           | It emits the currentIndex when user clicks on arrows or indicators         |
 
 
 #### Size Considerations and Recommendations

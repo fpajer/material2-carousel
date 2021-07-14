@@ -107,6 +107,9 @@ export class MatCarouselComponent
   @Output()
   public change: EventEmitter<number> = new EventEmitter<number>();
 
+  @Output()
+  public manualSwitch: EventEmitter<number> = new EventEmitter<number>();
+
   public get currentIndex(): number {
     if (this.listKeyManager) {
       return this.listKeyManager.activeItemIndex;
@@ -346,6 +349,8 @@ export class MatCarouselComponent
   private goto(direction: Direction, index?: number): void {
     if (!this.playing) {
       const rtl = this.orientation === 'rtl';
+
+      this.manualSwitch.emit(this.currentIndex);
 
       switch (direction) {
         case Direction.Left:
