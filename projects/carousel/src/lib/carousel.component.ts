@@ -223,14 +223,14 @@ export class MatCarouselComponent
 
   @HostListener('mouseenter')
   public onMouseEnter(): void {
-    if(this.pauseOnHover){
+    if (this.pauseOnHover) {
       this.stopTimer();
     }
   }
 
   @HostListener('mouseleave')
   public onMouseLeave(): void {
-    if(this.pauseOnHover){
+    if (this.pauseOnHover) {
       this.startTimer(this._autoplay);
     }
   }
