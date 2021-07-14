@@ -18,6 +18,12 @@
     &:last-of-type {
       right: 30px;
     }
+
+    &:disabled {
+      .progress-indicator {
+        transform: scaleX(1);
+      }
+    }
   }
 
   &-list {
@@ -52,5 +58,11 @@
       @include size(10px);
       margin: 7.5px;
     }
+  }
+
+  .progress-indicator {
+    transition-property: transform;
+    transform: scaleX(0.01);
+    transform-origin: 0% 0%;
   }
 }

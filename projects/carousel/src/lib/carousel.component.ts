@@ -50,6 +50,10 @@ export class MatCarouselComponent
   @Input()
   public set interval(value: number) {
     this.interval$.next(value);
+    this._interval = value;
+  }
+  public get interval(): number {
+    return this._interval;
   }
 
   public get loop(): boolean {
@@ -64,6 +68,7 @@ export class MatCarouselComponent
   @Input() public hideArrows = true;
   @Input() public hideIndicators = true;
   @Input() public pauseOnHover = true;
+  @Input() public progressIndicator = false;
   @Input() public color: ThemePalette = 'accent';
 
   public get maxWidth(): string {
@@ -129,6 +134,7 @@ export class MatCarouselComponent
   private _autoplay = true;
   private autoplay$ = new Subject<boolean>();
 
+  private _interval = 5000;
   private interval$ = new BehaviorSubject<number>(5000);
   private slides$ = new BehaviorSubject<number>(null);
 
