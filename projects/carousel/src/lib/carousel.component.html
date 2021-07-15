@@ -76,13 +76,13 @@
       mat-mini-fab
       [color]="color"
       [disabled]="i == currentIndex"
-      (click)="slideTo(i)"
+      (click)="slideTo(i, true)"
       (focus)="carouselContainer.focus()"
     >
       <div
         *ngIf="progressIndicator"
         class="progress-indicator"
-        [class.running]="i === currentIndex"
+        [class.running]="i === currentIndex && started"
         [style.transition-duration]="interval + 'ms'"
         [style.background-color]="progressIndicator">
       </div>

@@ -125,12 +125,8 @@ export class MatCarouselComponent
     return null;
   }
 
-  @ContentChildren(MatCarouselSlideComponent) public slidesList: QueryList<
-    MatCarouselSlideComponent
-  >;
-  @ViewChild('carouselContainer') private carouselContainer: ElementRef<
-    HTMLDivElement
-  >;
+  @ContentChildren(MatCarouselSlideComponent) public slidesList: QueryList<MatCarouselSlideComponent>;
+  @ViewChild('carouselContainer') private carouselContainer: ElementRef<HTMLDivElement>;
   @ViewChild('carouselList') private carouselList: ElementRef<HTMLElement>;
   public listKeyManager: ListKeyManager<MatCarouselSlideComponent>;
 
@@ -155,6 +151,7 @@ export class MatCarouselComponent
 
   private destroy$ = new Subject<never>();
   private playing = false;
+  public started = false;
 
   constructor(
     private animationBuilder: AnimationBuilder,
@@ -219,8 +216,8 @@ export class MatCarouselComponent
     this.goto(Direction.Left);
   }
 
-  public slideTo(index: number): void {
-    this.goto(Direction.Index, index);
+  public slideTo(index: number, fromUser?: boolean): void {
+    this.goto(Direction.Index, index, fromUser);
   }
 
   @HostListener('keyup', ['$event'])
@@ -346,11 +343,13 @@ export class MatCarouselComponent
     return this.carouselContainer.nativeElement.clientWidth;
   }
 
-  private goto(direction: Direction, index?: number): void {
+  private goto(direction: Direction, index?: number, fromUser?: boolean): void {
     if (!this.playing) {
       const rtl = this.orientation === 'rtl';
 
-      this.manualSwitch.emit(this.currentIndex);
+      if (fromUser) {
+        this.manualSwitch.emit(this.currentIndex);
+      }
 
       switch (direction) {
         case Direction.Left:
@@ -376,8 +375,9 @@ export class MatCarouselComponent
 
     animation.onStart(() => {
       this.playing = true;
+      this.started = true;
       this.animationStart.emit(this.currentIndex);
-  });
+    });
     animation.onDone(() => {
       this.change.emit(this.currentIndex);
       this.playing = false;
