@@ -209,15 +209,15 @@ export class MatCarouselComponent
   }
 
   public next(): void {
-    this.goto(Direction.Right);
+    this.goto(Direction.Right, true);
   }
 
   public previous(): void {
-    this.goto(Direction.Left);
+    this.goto(Direction.Left, true);
   }
 
   public slideTo(index: number, fromUser?: boolean): void {
-    this.goto(Direction.Index, index, fromUser);
+    this.goto(Direction.Index, fromUser, index);
   }
 
   @HostListener('keyup', ['$event'])
@@ -343,12 +343,13 @@ export class MatCarouselComponent
     return this.carouselContainer.nativeElement.clientWidth;
   }
 
-  private goto(direction: Direction, index?: number, fromUser?: boolean): void {
+  private goto(direction: Direction, fromUser?: boolean, index?: number): void {
     if (!this.playing) {
       const rtl = this.orientation === 'rtl';
 
       if (fromUser) {
         this.manualSwitch.emit(this.currentIndex);
+        this.resetTimer(this._interval);
       }
 
       switch (direction) {
