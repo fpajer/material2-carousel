@@ -82,8 +82,8 @@
       <div
         *ngIf="progressIndicator"
         class="progress-indicator"
-        [class.running]="i === currentIndex && started"
-        [style.transition-duration]="interval + 'ms'"
+        [class.running]="i === currentIndex"
+        [style.animation-duration]="interval + 'ms'"
         [style.background-color]="progressIndicator">
       </div>
     </button>
